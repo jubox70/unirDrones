@@ -1,0 +1,663 @@
+{
+  "contractName": "DataLibrary",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.5+commit.a4f2e591\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/DataLibrary.sol\":\"DataLibrary\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/DataLibrary.sol\":{\"keccak256\":\"0xad6224b467900644671ea0596bd38c0e0cfff71f356caed946929a42657b5b61\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a95803e40e907d2ca69ed4ac310d60579967c341192e5e0d7857f4cdff49cb34\",\"dweb:/ipfs/Qmc1c1A7azjPaq8pP9wBrVK314svBqMqnM1t78TpzxbFSo\"]}},\"version\":1}",
+  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220296ebd4fe4c59f829baee2f79b8c7cd550c0ef4a0a16c1ab3296495169db731c64736f6c63430008050033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220296ebd4fe4c59f829baee2f79b8c7cd550c0ef4a0a16c1ab3296495169db731c64736f6c63430008050033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "60:354:13:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "60:354:13:-:0;;;;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\nlibrary DataLibrary {\r\n\r\n    enum Pesticidas { A, B, C, D, E }\r\n\r\n    struct Dron {\r\n        uint256 alturaMaxima;\r\n        uint256 alturaMinima;\r\n        uint256 coste;\r\n        Pesticidas pesticidaAceptado;\r\n\r\n    }\r\n\r\n    struct Parcela {\r\n        uint256 alturaMaxima;\r\n        uint256 alturaMinima;\r\n        Pesticidas pesticidaAceptado;\r\n\r\n    }\r\n}",
+  "sourcePath": "C:\\Users\\ernesto.romero\\OneDrive\\Documentos\\proyectos_blockchain\\unir_drones\\contracts\\DataLibrary.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/DataLibrary.sol",
+    "exportedSymbols": {
+      "DataLibrary": [
+        1613
+      ]
+    },
+    "id": 1614,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1588,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:13"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "fullyImplemented": true,
+        "id": 1613,
+        "linearizedBaseContracts": [
+          1613
+        ],
+        "name": "DataLibrary",
+        "nameLocation": "68:11:13",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "DataLibrary.Pesticidas",
+            "id": 1594,
+            "members": [
+              {
+                "id": 1589,
+                "name": "A",
+                "nameLocation": "107:1:13",
+                "nodeType": "EnumValue",
+                "src": "107:1:13"
+              },
+              {
+                "id": 1590,
+                "name": "B",
+                "nameLocation": "110:1:13",
+                "nodeType": "EnumValue",
+                "src": "110:1:13"
+              },
+              {
+                "id": 1591,
+                "name": "C",
+                "nameLocation": "113:1:13",
+                "nodeType": "EnumValue",
+                "src": "113:1:13"
+              },
+              {
+                "id": 1592,
+                "name": "D",
+                "nameLocation": "116:1:13",
+                "nodeType": "EnumValue",
+                "src": "116:1:13"
+              },
+              {
+                "id": 1593,
+                "name": "E",
+                "nameLocation": "119:1:13",
+                "nodeType": "EnumValue",
+                "src": "119:1:13"
+              }
+            ],
+            "name": "Pesticidas",
+            "nameLocation": "94:10:13",
+            "nodeType": "EnumDefinition",
+            "src": "89:33:13"
+          },
+          {
+            "canonicalName": "DataLibrary.Dron",
+            "id": 1604,
+            "members": [
+              {
+                "constant": false,
+                "id": 1596,
+                "mutability": "mutable",
+                "name": "alturaMaxima",
+                "nameLocation": "161:12:13",
+                "nodeType": "VariableDeclaration",
+                "scope": 1604,
+                "src": "153:20:13",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1595,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "153:7:13",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1598,
+                "mutability": "mutable",
+                "name": "alturaMinima",
+                "nameLocation": "192:12:13",
+                "nodeType": "VariableDeclaration",
+                "scope": 1604,
+                "src": "184:20:13",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1597,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "184:7:13",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1600,
+                "mutability": "mutable",
+                "name": "coste",
+                "nameLocation": "223:5:13",
+                "nodeType": "VariableDeclaration",
+                "scope": 1604,
+                "src": "215:13:13",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1599,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "215:7:13",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1603,
+                "mutability": "mutable",
+                "name": "pesticidaAceptado",
+                "nameLocation": "250:17:13",
+                "nodeType": "VariableDeclaration",
+                "scope": 1604,
+                "src": "239:28:13",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_Pesticidas_$1594",
+                  "typeString": "enum DataLibrary.Pesticidas"
+                },
+                "typeName": {
+                  "id": 1602,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 1601,
+                    "name": "Pesticidas",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 1594,
+                    "src": "239:10:13"
+                  },
+                  "referencedDeclaration": 1594,
+                  "src": "239:10:13",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_Pesticidas_$1594",
+                    "typeString": "enum DataLibrary.Pesticidas"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Dron",
+            "nameLocation": "137:4:13",
+            "nodeType": "StructDefinition",
+            "scope": 1613,
+            "src": "130:147:13",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "DataLibrary.Parcela",
+            "id": 1612,
+            "members": [
+              {
+                "constant": false,
+                "id": 1606,
+                "mutability": "mutable",
+                "name": "alturaMaxima",
+                "nameLocation": "319:12:13",
+                "nodeType": "VariableDeclaration",
+                "scope": 1612,
+                "src": "311:20:13",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1605,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "311:7:13",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1608,
+                "mutability": "mutable",
+                "name": "alturaMinima",
+                "nameLocation": "350:12:13",
+                "nodeType": "VariableDeclaration",
+                "scope": 1612,
+                "src": "342:20:13",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1607,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "342:7:13",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1611,
+                "mutability": "mutable",
+                "name": "pesticidaAceptado",
+                "nameLocation": "384:17:13",
+                "nodeType": "VariableDeclaration",
+                "scope": 1612,
+                "src": "373:28:13",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_Pesticidas_$1594",
+                  "typeString": "enum DataLibrary.Pesticidas"
+                },
+                "typeName": {
+                  "id": 1610,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 1609,
+                    "name": "Pesticidas",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 1594,
+                    "src": "373:10:13"
+                  },
+                  "referencedDeclaration": 1594,
+                  "src": "373:10:13",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_Pesticidas_$1594",
+                    "typeString": "enum DataLibrary.Pesticidas"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Parcela",
+            "nameLocation": "292:7:13",
+            "nodeType": "StructDefinition",
+            "scope": 1613,
+            "src": "285:126:13",
+            "visibility": "public"
+          }
+        ],
+        "scope": 1614,
+        "src": "60:354:13",
+        "usedErrors": []
+      }
+    ],
+    "src": "33:381:13"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/DataLibrary.sol",
+    "exportedSymbols": {
+      "DataLibrary": [
+        1613
+      ]
+    },
+    "id": 1614,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1588,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:13"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "fullyImplemented": true,
+        "id": 1613,
+        "linearizedBaseContracts": [
+          1613
+        ],
+        "name": "DataLibrary",
+        "nameLocation": "68:11:13",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "DataLibrary.Pesticidas",
+            "id": 1594,
+            "members": [
+              {
+                "id": 1589,
+                "name": "A",
+                "nameLocation": "107:1:13",
+                "nodeType": "EnumValue",
+                "src": "107:1:13"
+              },
+              {
+                "id": 1590,
+                "name": "B",
+                "nameLocation": "110:1:13",
+                "nodeType": "EnumValue",
+                "src": "110:1:13"
+              },
+              {
+                "id": 1591,
+                "name": "C",
+                "nameLocation": "113:1:13",
+                "nodeType": "EnumValue",
+                "src": "113:1:13"
+              },
+              {
+                "id": 1592,
+                "name": "D",
+                "nameLocation": "116:1:13",
+                "nodeType": "EnumValue",
+                "src": "116:1:13"
+              },
+              {
+                "id": 1593,
+                "name": "E",
+                "nameLocation": "119:1:13",
+                "nodeType": "EnumValue",
+                "src": "119:1:13"
+              }
+            ],
+            "name": "Pesticidas",
+            "nameLocation": "94:10:13",
+            "nodeType": "EnumDefinition",
+            "src": "89:33:13"
+          },
+          {
+            "canonicalName": "DataLibrary.Dron",
+            "id": 1604,
+            "members": [
+              {
+                "constant": false,
+                "id": 1596,
+                "mutability": "mutable",
+                "name": "alturaMaxima",
+                "nameLocation": "161:12:13",
+                "nodeType": "VariableDeclaration",
+                "scope": 1604,
+                "src": "153:20:13",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1595,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "153:7:13",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1598,
+                "mutability": "mutable",
+                "name": "alturaMinima",
+                "nameLocation": "192:12:13",
+                "nodeType": "VariableDeclaration",
+                "scope": 1604,
+                "src": "184:20:13",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1597,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "184:7:13",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1600,
+                "mutability": "mutable",
+                "name": "coste",
+                "nameLocation": "223:5:13",
+                "nodeType": "VariableDeclaration",
+                "scope": 1604,
+                "src": "215:13:13",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1599,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "215:7:13",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1603,
+                "mutability": "mutable",
+                "name": "pesticidaAceptado",
+                "nameLocation": "250:17:13",
+                "nodeType": "VariableDeclaration",
+                "scope": 1604,
+                "src": "239:28:13",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_Pesticidas_$1594",
+                  "typeString": "enum DataLibrary.Pesticidas"
+                },
+                "typeName": {
+                  "id": 1602,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 1601,
+                    "name": "Pesticidas",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 1594,
+                    "src": "239:10:13"
+                  },
+                  "referencedDeclaration": 1594,
+                  "src": "239:10:13",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_Pesticidas_$1594",
+                    "typeString": "enum DataLibrary.Pesticidas"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Dron",
+            "nameLocation": "137:4:13",
+            "nodeType": "StructDefinition",
+            "scope": 1613,
+            "src": "130:147:13",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "DataLibrary.Parcela",
+            "id": 1612,
+            "members": [
+              {
+                "constant": false,
+                "id": 1606,
+                "mutability": "mutable",
+                "name": "alturaMaxima",
+                "nameLocation": "319:12:13",
+                "nodeType": "VariableDeclaration",
+                "scope": 1612,
+                "src": "311:20:13",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1605,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "311:7:13",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1608,
+                "mutability": "mutable",
+                "name": "alturaMinima",
+                "nameLocation": "350:12:13",
+                "nodeType": "VariableDeclaration",
+                "scope": 1612,
+                "src": "342:20:13",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1607,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "342:7:13",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1611,
+                "mutability": "mutable",
+                "name": "pesticidaAceptado",
+                "nameLocation": "384:17:13",
+                "nodeType": "VariableDeclaration",
+                "scope": 1612,
+                "src": "373:28:13",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_Pesticidas_$1594",
+                  "typeString": "enum DataLibrary.Pesticidas"
+                },
+                "typeName": {
+                  "id": 1610,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 1609,
+                    "name": "Pesticidas",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 1594,
+                    "src": "373:10:13"
+                  },
+                  "referencedDeclaration": 1594,
+                  "src": "373:10:13",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_Pesticidas_$1594",
+                    "typeString": "enum DataLibrary.Pesticidas"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Parcela",
+            "nameLocation": "292:7:13",
+            "nodeType": "StructDefinition",
+            "scope": 1613,
+            "src": "285:126:13",
+            "visibility": "public"
+          }
+        ],
+        "scope": 1614,
+        "src": "60:354:13",
+        "usedErrors": []
+      }
+    ],
+    "src": "33:381:13"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.5+commit.a4f2e591.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.2",
+  "updatedAt": "2022-04-03T12:01:16.861Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

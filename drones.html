@@ -1,0 +1,311 @@
+<html>
+
+    <head>
+        <title>FUMIG-CHAIN DRONES</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+        <script src="static/utiles.js"></script>
+
+        <style>
+
+            .boton {
+                cursor:pointer;
+                color:blue;
+                text-decoration:underline;
+            }
+            .boton:hover {
+                text-decoration:none;
+                text-shadow: 1px 1px 1px #555;
+            }
+
+            .espacio_formulario {
+              margin: 5px;
+            }
+            
+           
+
+        </style>
+
+        <script>
+
+            var web3 = null;           
+
+            var accounts = null;
+
+            var misDrones = new Array();
+
+            async function createDron() {
+
+                var contract = await new web3.eth.Contract(abiDrones, addressContratoDrones);              
+
+                var alturaMaxima = $("#alturaMaximaValue").val();
+                var alturaMinima = $("#alturaMinimaValue").val();
+                var coste = $("#costeValue").val() //web3.utils.toWei($("#costeValue").val(), 'mwei');
+                var pesticida = $("#pesticidaValue").val();             
+                                                
+                contract.methods.mint(alturaMaxima, alturaMinima, coste, pesticida).send({
+                    from: accounts[0]
+           
+                });
+            }
+
+            async function consultarTrabajosMisDrones() {
+
+              if (window.web3 == null) {
+                  alert("No hay ninguna cuenta asociada a un wallet, no puedes hacer transacciones");
+              }
+              else {
+
+                  var contract = await new web3.eth.Contract(abiDrones, addressContratoDrones);  
+                  
+                  var contractOperacionesDronesParcelas = await new web3.eth.Contract(abiOperacionesDronesParcelas, addressOperacionesDronesParcelas); 
+                  
+                  var resultGetDrones = await contract.methods.getDronesIdByOwner(accounts[0]).call(); 
+                  
+                  for (var i = 0; i < resultGetDrones.length; i++) {
+                    alert("Dron ID: " + resultGetDrones[i]);
+                    var parcelaId = await contractOperacionesDronesParcelas.methods.getPendientesDeFumigar(resultGetDrones[i]).call(); 
+
+                    if (parcelaId != 0) {
+                      alert("El dron: " + resultGetDrones[i] + " tiene pendiente la parcela: " + parcelaId);
+                    }
+                    
+                  }
+
+              }
+
+               
+            }
+
+            async function lanzarFumigacion() {
+
+              if (window.web3 == null) {
+                  alert("No hay ninguna cuenta asociada a un wallet, no puedes hacer transacciones");
+              }
+              else {
+
+                  var contractOperacionesDronesParcelas = await new web3.eth.Contract(abiOperacionesDronesParcelas, addressOperacionesDronesParcelas); 
+
+                  alert("Voy a fumigar con el dron: " + $("#dronId").val() + "  la parcela: " +  $("#parcelaId").val());
+                                    
+                  await contractOperacionesDronesParcelas.methods.fumigar($("#dronId").val(), $("#parcelaId").val()).send({
+                    from: accounts[0]
+           
+                });   
+              }              
+            }
+
+            async function verMisDrones() {
+
+                if (window.web3 == null) {
+                  alert("No hay ninguna cuenta asociada a un wallet, no puedes hacer transacciones");
+                }
+                else {
+
+                  var contract = await new web3.eth.Contract(abiDrones, addressContratoDrones);                                        
+                  
+                  var resultGetDrones = await contract.methods.getDronesIdByOwner(accounts[0]).call();            
+
+                      var htmlDronesMostrar = "";
+
+                      misDrones = new Array();
+
+                      for (var i = 0; i < resultGetDrones.length; i++) {
+
+                        htmlDronesMostrar = htmlDronesMostrar + "<div>Dron Id: " + resultGetDrones[i] + "</div>";
+
+                        misDrones.push(resultGetDrones[i]);
+
+                        var resultDronSpecification = await contract.methods.getDronSpecification(resultGetDrones[i]).call();                                                    
+
+                          htmlDronesMostrar = htmlDronesMostrar + "<div>Altura Maxima: " + resultDronSpecification.alturaMaxima + "</div>";
+                          htmlDronesMostrar = htmlDronesMostrar + "<div>Altura Minima: " + resultDronSpecification.alturaMinima + "</div>";
+                          htmlDronesMostrar = htmlDronesMostrar + "<div>Coste: " + resultDronSpecification.coste + "</div>";
+                          htmlDronesMostrar = htmlDronesMostrar + "<div>Pesticida Aceptado: ";
+
+                          if (resultDronSpecification.pesticidaAceptado == 0) {
+                            htmlDronesMostrar = htmlDronesMostrar + "A";
+                          }
+                          if (resultDronSpecification.pesticidaAceptado == 1) {
+                            htmlDronesMostrar = htmlDronesMostrar + "B";
+                          }
+                          if (resultDronSpecification.pesticidaAceptado == 2) {
+                            htmlDronesMostrar = htmlDronesMostrar + "C";
+                          }
+                          if (resultDronSpecification.pesticidaAceptado == 3) {
+                            htmlDronesMostrar = htmlDronesMostrar + "D";
+                          }
+                          if (resultDronSpecification.pesticidaAceptado == 4) {
+                            htmlDronesMostrar = htmlDronesMostrar + "E";
+                          }                
+
+                      }
+                      
+                     
+                      $("#espacioVerDrones").html(htmlDronesMostrar);   
+                  
+                }
+                
+                
+            }
+            
+            $(document).ready(function() {
+                
+                const ethereumButton = document.querySelector('.enableEthereumButton');
+                const showAccount = document.querySelector('.showAccount');
+
+                // Ocultamos al principio todas las opciones de formularios
+                $("#espacioAnadirDron").toggle();
+                $("#espacioFumigar").toggle();
+                
+
+                ethereumButton.addEventListener('click', () => {
+                    getAccount();
+                });
+
+                async function getAccount() {
+                   
+                    await window.ethereum.request({method: 'eth_requestAccounts'});
+                    window.web3 = new Web3(window.ethereum);
+
+                    accounts = await web3.eth.getAccounts();
+
+                    //alert(account[0]);
+                    
+                    showAccount.innerHTML = accounts[0];
+                    
+                    
+                }
+
+                // Funcion que muestra/oculta los campos para crear el dron
+                $("#anadirDron").click(function(){
+
+                  if (window.web3 == null) {
+                    alert("No hay ninguna cuenta asociada a un wallet, no puedes hacer transacciones");
+                  }
+                  else {
+                    $("#espacioAnadirDron").toggle();
+                  }
+                    
+                });
+
+                $("#fumigar").click(function() {
+
+                  if (window.web3 == null) {
+                    alert("No hay ninguna cuenta asociada a un wallet, no puedes hacer transacciones");
+                  }
+                  else {
+                    $("#espacioFumigar").toggle();
+                  }
+                });
+                
+                // Funcion que llama a la blockchain y recupera los drones de una address
+                $("#verMisDrones").click(function(){
+                    verMisDrones();
+                });
+
+                // Funcion que llama a blockchain para crear el dron
+                $("#botonCrearDron").click(function(){
+                    createDron();
+                });
+
+                // Funcion que llama a blockchain para ver los trabajos en espera del dron
+                $("#consultarTrabajosMisDrones").click(function(){
+                    consultarTrabajosMisDrones();
+                });
+
+                // Funcion que llama a blockchain para fumigar
+                $("#botonFumigar").click(function(){
+                  lanzarFumigacion();
+                });
+                
+            });
+
+          
+
+            
+
+        </script>
+
+    </head>
+
+    <body>
+
+        
+
+        <h1>Bienvenido a FUMIG-CHAIN - Empresa de DRONES</h1>
+
+        <button class="enableEthereumButton">Enable Ethereum</button>
+        <h2>Account: <span class="showAccount"></span></h2>
+
+        <ul>
+            <li><span class="boton" id="anadirDron">A&ntilde;adir Dron</span></li>
+            <li>Eliminar Dron</li>
+            <li><span class="boton" id="verMisDrones">Ver mis drones</span></li>
+            <li><span class="boton" id="consultarTrabajosMisDrones">Consultar Trabajos en espera de ser lanzados</span></li>
+            <li><span class="boton" id="fumigar">Fumigar</span></li>
+            <li><a href="http://localhost:8080">Volver a Inicio</a></li>
+        </ul>
+
+        <div id="espacioAnadirDron" class="espacio_opcion_menu">
+            <div class="espacio_formulario">
+              <label for="alturaMinima"> Altura m&iacute;nima: </label>
+              <input type="text" id="alturaMinimaValue" name="alturaMinima" />
+            </div>
+
+            <div class="espacio_formulario">
+              <label for="alturaMaxima"> Altura m&aacute;xima: </label>
+              <input type="text" id="alturaMaximaValue" name="alturaMaxima" />
+            </div>
+            
+
+            <div class="espacio_formulario">
+              <label for="coste"> Coste: </label>
+              <input type="text" id="costeValue" name="coste" />
+            </div class="espacio_formulario">
+            
+
+            <div class="espacio_formulario">
+              <label for="pesticida"> Pesticida Aceptado: </label>
+              <select id="pesticidaValue">
+                <option value="0" selected>A</option>
+                <option value="1">B</option>
+                <option value="2">C</option>
+                <option value="3">D</option>
+              </select>
+            </div>
+
+            <div class="espacio_formulario">
+              <input type="button" id="botonCrearDron" value="Crear Dron"/>
+            </div>            
+
+        </div>
+
+        <div id="espacioVerDrones" class="espacio_opcion_menu">
+
+
+        </div>
+
+        <div id="espacioFumigar" class="espacio_opcion_menu">
+          <div class="espacio_formulario">
+            <label for="dronId"> Dron Id: </label>
+            <input type="text" id="dronId" name="dronId" />
+          </div>
+
+          <div class="espacio_formulario">
+            <label for="parcelaId"> Parcela Id: </label>
+            <input type="text" id="parcelaId" name="parcelaId" />
+          </div>         
+
+          <div class="espacio_formulario">
+            <input type="button" id="botonFumigar" value="Fumigar"/>
+          </div>            
+
+      </div>
+
+
+    </body>
+
+</html>
+
+
